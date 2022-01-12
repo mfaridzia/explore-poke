@@ -22,7 +22,7 @@ export const NavigationBottom = styled.nav`
   height: 70px;
   position: sticky;
   bottom: 0;
-  background: #fff;
+  background: #dbd227;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 `
@@ -38,4 +38,8 @@ export const MenuWrapper = styled.ul`
 
 export const MenuItems = styled.li`
   font-weight: bold;
+`
+
+export const Ahref = styled.a`
+  color: ${(props) => props.color};
 `

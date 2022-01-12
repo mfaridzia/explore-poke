@@ -1,5 +1,10 @@
+import { MyPokemonWrapper } from "src/components/MyPokemon/MyPokemonStyled";
+import MyPokemon from "src/components/MyPokemon/MyPokemon";
+
 export default function Home() {
   return (
-    <h1 style={{ minHeight: "700px" }}> My Pokemon Page </h1>
+    <MyPokemonWrapper>
+      <MyPokemon />
+    </MyPokemonWrapper>
   )
 }

@@ -65,14 +65,14 @@ export const PokemonListsWrapper = styled.div`
   flex-wrap: wrap;
   width: 50%;
   background: #fff;
-  margin: 0 auto;
+  margin: 0 auto 30px;
 `
 
 export const CatchPokemon = styled.button`
   width: 30%;
-  background: #f26257;
+  background: #e3d924;
   color: #fff;
-  margin: 30px auto 0px auto;
+  margin: 80px auto 0px auto;
   text-transform: capitalize;
   padding: 10px;
   border: none;
@@ -80,6 +80,6 @@ export const CatchPokemon = styled.button`
   font-weight: bold;
   cursor: pointer;
   &:hover {
-    background: #f77268;
+    background: #dbd227;
   }
 `

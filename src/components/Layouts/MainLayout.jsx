@@ -1,10 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { Wrapper } from "src/components/PokemonList/PokemonListStyled";
-import { NavigationTop, NavigationBottom, LogoWrapper, MenuWrapper, MenuItems }
+import { NavigationTop, NavigationBottom, LogoWrapper, MenuWrapper, MenuItems, Ahref }
   from "src/components/Navigation/Navigation";
 
 export default function MainLayout({ children }) {
+  const router = useRouter();
   return (
     <Wrapper>
       <NavigationTop>
@@ -17,11 +19,15 @@ export default function MainLayout({ children }) {
       
       <NavigationBottom>
         <MenuWrapper>
-          <Link href="/">
-            <a> <MenuItems> Explore Pokemon </MenuItems> </a>
+          <Link href="/" passHref>
+            <Ahref color={router.pathname === '/' ? '#3b3c3d' : '#ffffff'}>
+              <MenuItems> Explore Pokemon </MenuItems>
+            </Ahref>
           </Link>
-          <Link href="/my-pokemon">
-            <a> <MenuItems> My Pokemon </MenuItems> </a>
+          <Link href="/my-pokemon" passHref>
+            <Ahref color={router.pathname === '/my-pokemon' ? '#3b3c3d' : '#ffffff'}>
+              <MenuItems> My Pokemon </MenuItems>
+            </Ahref>
           </Link>
         </MenuWrapper>
       </NavigationBottom>

@@ -33,9 +33,13 @@ export const PokemonBox = styled.div`
   }
   @media screen and (min-width: 450px) {
     flex: 25%;
+    position: relative;
+    top: 35px;
   }
   @media (min-width: 400px) and (max-width: 500px) {
     flex: 50%;
+    position: relative;
+    top: 35px;
   }
 `;
 
@@ -51,6 +55,12 @@ export const Button = styled.button`
   border-radius: 5px;
   &:hover {
    background: #000;
+  }
+  @media screen and (min-width: 450px) {
+    margin: 45px 10px 20px;
+  }
+  @media (min-width: 400px) and (max-width: 500px) {
+    margin: 45px 10px 20px;
   }
 `;
 

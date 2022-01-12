@@ -3,7 +3,7 @@ import Image from "next/image";
 import { PokemonBox, ImageWrapper, PokemonName, TextOwned, TextWrapper } from "./PokemonListStyled";
 import useBackgroundColor from "src/hooks/useBackgroundColor";
 
-const PokemonList = ({ name, image, handleClick = () => {} }) => {
+const PokemonList = ({ name, image, owned, showOwned = true, handleClick }) => {
   const { backgroundColor } = useBackgroundColor(image);
   
   return (
@@ -13,7 +13,7 @@ const PokemonList = ({ name, image, handleClick = () => {} }) => {
       </ImageWrapper>
       <TextWrapper>
         <PokemonName> {name} </PokemonName> 
-        <TextOwned> (Owned: 1) </TextOwned>
+        {showOwned && <TextOwned> (Owned: {owned ? owned : 0}) </TextOwned>}
       </TextWrapper>
     </PokemonBox>
   )
