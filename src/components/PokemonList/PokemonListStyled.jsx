@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
   @media (min-width: 400px) and (max-width: 500px) {
     max-width: 100%;
   }
-`;
+`
 
 export const PokemonBox = styled.div`
   width: 100%;
@@ -41,7 +41,7 @@ export const PokemonBox = styled.div`
     position: relative;
     top: 35px;
   }
-`;
+`
 
 export const Button = styled.button`
   width: 100%;
@@ -62,7 +62,7 @@ export const Button = styled.button`
   @media (min-width: 400px) and (max-width: 500px) {
     margin: 45px 10px 20px;
   }
-`;
+`
 
 export const ImageWrapper = styled.div`
   margin-top: 20px;

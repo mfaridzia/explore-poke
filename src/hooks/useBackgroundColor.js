@@ -1,7 +1,7 @@
-import ColorThief from "colorthief";
 import { useEffect, useState } from "react";
+import ColorThief from "colorthief";
 
-const useBackgroundColor = (imgUrl) => {
+export default function useBackgroundColor(imgUrl) {
   const [backgroundColor, setBackgroundColor] = useState('');
 
   useEffect(() => {
@@ -11,9 +11,10 @@ const useBackgroundColor = (imgUrl) => {
 
     image.onload = function () {
       const colorThief = new ColorThief();
-      const palettes = colorThief.getPalette(this, 10);
+      const colorPalette = colorThief.getPalette(this, 10);
+      console.log("COLOR", colorPalette);
 
-      setBackgroundColor(palettes.map((color) => {
+      setBackgroundColor(colorPalette.map((color) => {
         return `rgba(${color[0]}, ${color[1]}, ${color[2]}, 1)`;
       })[0]);
     };
@@ -22,6 +23,4 @@ const useBackgroundColor = (imgUrl) => {
   return { 
     backgroundColor
   };
-};
-
-export default useBackgroundColor;
+}
