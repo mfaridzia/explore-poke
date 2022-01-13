@@ -11,7 +11,7 @@ const rotate360 = keyframes`
 `;
 
 export const LoadingWrapper = styled.div`
-  min-height: 100vh;
+  min-height: 120vh;
   width: 100%;
   margin: 0 auto;
 `
