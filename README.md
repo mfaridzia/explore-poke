@@ -6,10 +6,22 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Live Demo
 
+[Explore-Poke](https://explore-poke.vercel.app/) (https://explore-poke.vercel.app/)
+
+#
+
+## Lighthouse Score (13/01/2022)
+
+<img src="./preview/lighthouse.png" />
+
+#
+
 <p>
-  <img width="40%" src="./preview/preview2.png" />
-  <img width="40%" src="./preview/preview1.png" />
+  <img width="45%" src="./preview/preview2.png" />
+  <img width="45%" src="./preview/preview1.png" />
 </p>
+
+#
 
 ## Getting Started
 
