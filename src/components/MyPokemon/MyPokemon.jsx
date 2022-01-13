@@ -11,7 +11,8 @@ export default function MyPokemon() {
 
   useEffect(() => {
     const myPokemonData = JSON.parse(window.localStorage.getItem(MY_POKEMON));
-    const transformPokemonData = myPokemonData.map((pokemon) => {
+    const checkPokemon = myPokemonData ?? [];
+    const transformPokemonData = checkPokemon.map((pokemon) => {
       const checkImage = pokemon.sprites ? pokemon.sprites.front_default : pokemon.image;
       return {
         id: pokemon.id,

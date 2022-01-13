@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import { useQuery } from "@apollo/client";
 import { MY_POKEMON } from "src/constants";
 import { GET_POKEMON } from "src/api/pokemon";
@@ -46,6 +47,14 @@ export default function Pokemon() {
 
   return (
     <PokemonWrapper>
+      <Head>
+        <title>Pokemon - {name}</title>
+        <meta
+          name="description"
+          content="Explore further to know what are the abilities possessed by pokemon."
+          key="description"
+        />
+      </Head>
       <NotificationMessage
         isCatched={isCatched}
         inputName={pokemonName}

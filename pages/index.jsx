@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useLazyQuery } from "@apollo/client";
 import { GET_POKEMONS } from "src/api/pokemons";
@@ -72,6 +73,15 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>Explore Pokemon</title>
+        <meta
+          name="description"
+          content="Here you can explore various types of Pokemon that exist around the world."
+          key="description"
+        />
+      </Head>
+
       { pokemonLists.map((pokemon, index) => (
           <PokemonList
             key={pokemon.id}
@@ -82,7 +92,7 @@ export default function Home() {
           />
         ))
       }
-
+      
       <Button onClick={loadMore}> Load More </Button>
     </>
   )
