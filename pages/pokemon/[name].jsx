@@ -2,7 +2,9 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { useQuery } from "@apollo/client";
-import { MY_POKEMON } from "src/constants";
+import { initializeApollo } from "src/lib/apolloClient";
+import { MY_POKEMON, OFFSET, LIMIT } from "src/constants";
+import { GET_POKEMONS } from "src/api/pokemons";
 import { GET_POKEMON } from "src/api/pokemon";
 import PokemonDetail from "src/components/PokemonDetail/Pokemon";
 import NotificationMessage from "src/components/PokemonDetail/NotificationMessage";
@@ -74,4 +76,41 @@ export default function Pokemon() {
       )}
     </PokemonWrapper>
   )
+}
+
+export async function getStaticPaths() {
+  const apolloClient = initializeApollo()
+
+  const { data } = await apolloClient.query({
+    query: GET_POKEMONS,
+    variables: {
+      limit: LIMIT,
+      offset: OFFSET
+    },
+  })
+
+  const pokemons = data.pokemons;
+
+  const paths = pokemons.results.map(pokemon => ({
+    params: { name: pokemon.name }
+  }));
+  
+  return { paths, fallback: true }
+}
+
+export async function getStaticProps({ params }) {
+  const apolloClient = initializeApollo();
+
+  const nameQuery = params.name;
+
+  await apolloClient.query({
+    query: GET_POKEMON,
+    variables: { name: nameQuery }
+  });
+
+  return {
+    props: {
+      initialApolloState: apolloClient.cache.extract()
+    }
+  }
 }

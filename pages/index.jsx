@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useLazyQuery } from "@apollo/client";
+import { initializeApollo } from "src/lib/apolloClient";
 import { GET_POKEMONS } from "src/api/pokemons";
 import { OFFSET, LIMIT, MY_POKEMON } from "src/constants";
 import PokemonList from "src/components/PokemonList/PokemonList";
@@ -13,7 +14,7 @@ export default function Home() {
   const [pokemonLists, setPokemonLists] = useState([]);
   const [myPokemon, setMyPokemon] = useState([]);
 
-  const [getPokemons, { data, fetchMore, loading }] = useLazyQuery(GET_POKEMONS, {
+  const [getPokemons, { data, fetchMore, loading, error }] = useLazyQuery(GET_POKEMONS, {
     onCompleted: (data) => {
       const amountOwned = data.pokemons.results.map((item) => {
         return myPokemon.filter((pokemon) => pokemon.name === item.name).length || 0;
@@ -71,6 +72,8 @@ export default function Home() {
     )
   }
 
+  if (error) return <h1> ERROR~ </h1>;
+
   return (
     <>
       <Head>
@@ -96,4 +99,22 @@ export default function Home() {
       <Button onClick={loadMore}> Load More </Button>
     </>
   )
+}
+
+export async function getStaticProps() {
+  const apolloClient = initializeApollo();
+
+  await apolloClient.query({
+    query: GET_POKEMONS,
+    variables: {
+      limit: LIMIT,
+      offset: OFFSET
+    }
+  });
+
+  return {
+    props: {
+      initialApolloState: apolloClient.cache.extract()
+    }
+  }
 }
