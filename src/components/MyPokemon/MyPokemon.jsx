@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { MY_POKEMON } from "src/constants";
-import { EmptyPokemon, ButtonCatchPokemon, MyPokemonCardWrapper, PokemonBox, ReleaseButton }
+import { EmptyPokemon, ButtonCatchPokemon, MyPokemonCardWrapper, ReleaseButton }
   from "src/components/MyPokemon/MyPokemonStyled";
 import PokemonList from "src/components/PokemonList/PokemonList";
 

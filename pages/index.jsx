@@ -14,7 +14,7 @@ export default function Home() {
   const [pokemonLists, setPokemonLists] = useState([]);
   const [myPokemon, setMyPokemon] = useState([]);
 
-  const [getPokemons, { data, fetchMore, loading, error }] = useLazyQuery(GET_POKEMONS, {
+  const [getPokemons, { data, fetchMore, loading }] = useLazyQuery(GET_POKEMONS, {
     onCompleted: (data) => {
       const amountOwned = data.pokemons.results.map((item) => {
         return myPokemon.filter((pokemon) => pokemon.name === item.name).length || 0;
@@ -71,8 +71,6 @@ export default function Home() {
       </LoadingWrapper>
     )
   }
-
-  if (error) return <h1> ERROR~ </h1>;
 
   return (
     <>
