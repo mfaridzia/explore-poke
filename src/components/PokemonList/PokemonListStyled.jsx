@@ -26,7 +26,6 @@ export const PokemonBox = styled.div`
   align-items: center;
   margin: 10px 10px 5px 10px;
   border-radius: 5px;
-  cursor: pointer;
   @media screen and (min-width: 900px) {
     position: relative;
     top: 25px;
@@ -66,6 +65,7 @@ export const Button = styled.button`
 
 export const ImageWrapper = styled.div`
   margin-top: 20px;
+  cursor: pointer;
 `
 
 export const TextWrapper = styled.div`
@@ -74,6 +74,7 @@ export const TextWrapper = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
   @media screen and (max-width: 450px) {
     flex-direction: column;
     justify-content: center;

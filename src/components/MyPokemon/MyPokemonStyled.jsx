@@ -80,4 +80,15 @@ export const MyPokemonName = styled.h2`
   }
 `
 
+export const PokemonBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  width: 100%;
+`
+
+export const ReleaseButton = styled(ButtonCatchPokemon)`
+
+`
+
 

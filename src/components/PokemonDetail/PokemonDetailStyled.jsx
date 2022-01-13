@@ -14,11 +14,11 @@ export const ImageWrapper = styled.div`
   margin: 50px auto 0px auto;
 `
 
-export const PokemonName = styled.h2`
-  text-transform: capitalize;
-  font-size: 35px;
-  text-align: center;
-`
+  export const PokemonName = styled.h2`
+    text-transform: capitalize;
+    font-size: 35px;
+    text-align: center;
+  `
 
 export const PokemonTypeWrapper = styled.div`
   display: flex;
@@ -70,7 +70,7 @@ export const PokemonListsWrapper = styled.div`
 
 export const CatchPokemon = styled.button`
   width: 30%;
-  background: #e3d924;
+  background: #ccc42f;
   color: #fff;
   margin: 80px auto 0px auto;
   text-transform: capitalize;
@@ -82,4 +82,52 @@ export const CatchPokemon = styled.button`
   &:hover {
     background: #dbd227;
   }
+`
+
+export const TextSuccess = styled.p`
+  color: #000;
+  text-align: center;
+  font-size: 15px;
+  text-align: center;
+  padding: 6px;
+  margin-top: 40px;
+`
+
+export const TextFailed = styled.p`
+  color: red;
+  text-align: center;
+  font-size: 15px;
+  text-align: center;
+  padding: 6px;
+  margin-top: 40px;
+`
+
+export const InputPokemonName = styled.input`
+  width: 50%;
+  border: none;
+  border: 1px solid #dbd227;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 0 auto 20px;
+  outline: none;
+`
+
+export const ButtonSavePokemon = styled.button`
+  border: none;
+  background: #dbd227;
+  padding: 10px;
+  width: 50%;
+  margin: 0 auto;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  &:hover {
+    background: #bfb82c;
+  }
+`
+
+export const CloseIcon = styled.span`
+  margin-left: 10px;
+  color: #000;
+  cursor: pointer;
 `

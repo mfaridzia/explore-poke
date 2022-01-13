@@ -4,17 +4,16 @@ import { ImageWrapper, PokemonName, PokemonTypes, PokemonTypeWrapper }
 import { PokemonMoveWrapper, PokemonMoveTitle, PokemonMoveLists, PokemonListsWrapper, CatchPokemon }
   from "src/components/PokemonDetail/PokemonDetailStyled";
 
-export default function PokemonDetail({ showModal, pokemon }) {
+export default function PokemonDetail({ pokemon, handleCatchPokemon }) {
   const { types, moves } = pokemon;
   const transformTypes = types.map(item => item.type).map(item => item.name);
   const transformMoves = moves.map(item => item.move).map(item => item.name);
 
   return (
     <>
-      <CatchPokemon onClick={showModal}>
-        Catch { pokemon.name }!
+      <CatchPokemon onClick={handleCatchPokemon}>
+        catch this pokemon now!
       </CatchPokemon>
-
       <ImageWrapper>
         <Image width="200" height="190" alt={pokemon.name} src={pokemon.sprites.front_default} />
       </ImageWrapper>
