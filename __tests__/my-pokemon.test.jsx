@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import MyPokemon from "pages/my-pokemon";
 
-describe("Pokemon Home Page", () => {
+describe("MyPokemon Home Page", () => {
   it('should render my pokemon without crash', () => {
     const { container } = render(
       <MyPokemon />
