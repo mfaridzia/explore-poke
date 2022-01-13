@@ -40,6 +40,10 @@ export const PokemonBox = styled.div`
     position: relative;
     top: 35px;
   }
+  @media screen and (max-width: 400px) {
+    position: relative;
+    top: 30px;
+  }
 `
 
 export const Button = styled.button`

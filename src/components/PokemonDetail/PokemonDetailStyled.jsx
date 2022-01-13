@@ -12,6 +12,9 @@ export const ImageWrapper = styled.div`
   background: #ddd;
   border-radius: 50%;
   margin: 50px auto 0px auto;
+  @media screen and (max-width: 300px) {
+    width: 50%;
+  }
 `
 
   export const PokemonName = styled.h2`
@@ -37,6 +40,11 @@ export const PokemonTypes = styled.h3`
   @media screen and (min-width: 600px) {
     padding: 10px;
     font-size: 16px;
+  }
+  @media screen and (max-width: 300px) {
+    padding: 5px;
+    font-size: 16px;
+    min-width: auto;
   }
 `
 
@@ -81,6 +89,9 @@ export const CatchPokemon = styled.button`
   cursor: pointer;
   &:hover {
     background: #dbd227;
+  }
+  @media screen and (max-width: 400px) {
+    width: 50%;
   }
 `
 
