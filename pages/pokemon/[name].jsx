@@ -6,6 +6,7 @@ import { GET_POKEMON } from "src/api/pokemon";
 import PokemonDetail from "src/components/PokemonDetail/Pokemon";
 import NotificationMessage from "src/components/PokemonDetail/NotificationMessage";
 import { PokemonWrapper } from "src/components/PokemonDetail/PokemonDetailStyled";
+import { Loading, LoadingWrapper } from "src/components/Loading/Loading";
 
 export default function Pokemon() {
   const [isCatched, setIsCatched] = useState('default');
@@ -14,7 +15,7 @@ export default function Pokemon() {
   const { query } = useRouter();
   const name = query.name;
  
-  const { data, loading, error } = useQuery(GET_POKEMON, {
+  const { data, loading } = useQuery(GET_POKEMON, {
     variables: { name },
     fetchPolicy: "cache-first"
   });
@@ -35,8 +36,13 @@ export default function Pokemon() {
     }
   }
 
-  if (loading) <h1> Loading... </h1>;
-  if (error) <h1> Error! </h1>;
+  if (loading) {
+    return (
+      <LoadingWrapper>
+        <Loading />
+      </LoadingWrapper>
+    )
+  }
 
   return (
     <PokemonWrapper>
@@ -53,7 +59,9 @@ export default function Pokemon() {
           handleCatchPokemon={handleCatchPokemon}
         /> 
       ) : (
-        <p> Loading... </p>
+        <LoadingWrapper>
+          <Loading />
+        </LoadingWrapper>
       )}
     </PokemonWrapper>
   )

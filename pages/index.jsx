@@ -5,6 +5,7 @@ import { GET_POKEMONS } from "src/api/pokemons";
 import { OFFSET, LIMIT, MY_POKEMON } from "src/constants";
 import PokemonList from "src/components/PokemonList/PokemonList";
 import { Button } from "src/components/PokemonList/PokemonListStyled";
+import { Loading, LoadingWrapper } from "src/components/Loading/Loading";
 
 export default function Home() {
   const router = useRouter();
@@ -61,8 +62,14 @@ export default function Home() {
     router.push(`pokemon/${pokemon.name}`);
   }
   
-  if (loading) return <h1 style={{ height: '100vh' }}> Loading... </h1>
-  
+  if (loading) {
+    return (
+      <LoadingWrapper>
+        <Loading />
+      </LoadingWrapper>
+    )
+  }
+
   return (
     <>
       { pokemonLists.map((pokemon, index) => (

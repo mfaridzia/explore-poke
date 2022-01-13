@@ -1,9 +1,7 @@
 import { TextSuccess, TextFailed, InputPokemonName, ButtonSavePokemon, CloseIcon } from
   "src/components/PokemonDetail/PokemonDetailStyled";
 
-export default function NotificationMessage({
-  inputName, handleInput, handleSave, isCatched, closeNotif
-}) {
+export default function NotificationMessage({ inputName, handleInput, handleSave, isCatched, closeNotif }) {
   return (
     <>
       {isCatched === 'success' && (
