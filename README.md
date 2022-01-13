@@ -1,3 +1,5 @@
+![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=catch-em-all&style=flat-square)
+
 # Explore-Poke
 
 Explore-Poke is a web to explore various types of pokemon that exist around the world.
