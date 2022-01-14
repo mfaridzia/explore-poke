@@ -26,11 +26,11 @@ export default function Home() {
     setMyPokemon(myPokemonData);
   }, []);
 
-  const amountOwned = data.pokemons.results.map((item) => {
+  const amountOwned = data?.pokemons?.results.map((item) => {
     return myPokemon.filter((pokemon) => pokemon.name === item.name).length || 0;
   });
 
-  const pokemonLists = data.pokemons.results.map((pokemon) => ({
+  const pokemonLists = data?.pokemons?.results.map((pokemon) => ({
     id: pokemon.id,
     name: pokemon.name,
     image: pokemon.image,
@@ -41,7 +41,7 @@ export default function Home() {
   const loadMore = () => {
     fetchMore({
       variables: {
-        offset: data.pokemons.nextOffset,
+        offset: data?.pokemons.nextOffset,
       },
       updateQuery: (previousResult, { fetchMoreResult }) => {
         const pokemons = {

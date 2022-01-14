@@ -15,7 +15,7 @@ export default function Pokemon() {
   const [isCatched, setIsCatched] = useState('default');
   const [pokemonName, setPokemonName] = useState('');
   const isCatchedValue = Math.random() < 0.5;
-  const { query } = useRouter();
+  const { query } = useRouter() || { query: { name: '' } };
   const name = query.name;
  
   const { data, loading } = useQuery(GET_POKEMON, {
