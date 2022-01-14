@@ -1,12 +1,12 @@
 ![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=catch-em-all&style=flat-square)
 
+# The main version of this repository is in the [poke-ssg](https://github.com/mfaridzia/explore-poke/tree/poke-ssg) branch (using ssg mode)
+
 # Explore-Poke
 
 Explore-Poke is a web to explore various types of pokemon that exist around the world.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## The main version of this repository is in the [poke-ssg](https://github.com/mfaridzia/explore-poke/tree/poke-ssg) branch (using ssg mode)
 
 ## Live Demo
 
