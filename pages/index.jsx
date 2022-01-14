@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useLazyQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { initializeApollo } from "src/lib/apolloClient";
 import { GET_POKEMONS } from "src/api/pokemons";
 import { OFFSET, LIMIT, MY_POKEMON } from "src/constants";
@@ -11,23 +11,9 @@ import { Loading, LoadingWrapper } from "src/components/Loading/Loading";
 
 export default function Home() {
   const router = useRouter();
-  const [pokemonLists, setPokemonLists] = useState([]);
   const [myPokemon, setMyPokemon] = useState([]);
 
-  const [getPokemons, { data, fetchMore, loading }] = useLazyQuery(GET_POKEMONS, {
-    onCompleted: (data) => {
-      const amountOwned = data.pokemons.results.map((item) => {
-        return myPokemon.filter((pokemon) => pokemon.name === item.name).length || 0;
-      });
-      const transformPokemon = data.pokemons.results.map((pokemon) => ({
-        id: pokemon.id,
-        name: pokemon.name,
-        image: pokemon.image,
-        url: pokemon.url,
-        owned: amountOwned
-      }));   
-      setPokemonLists(transformPokemon);
-    },
+  const { data, fetchMore, loading } = useQuery(GET_POKEMONS, {
     variables: {
       limit: LIMIT,
       offset: OFFSET
@@ -38,9 +24,19 @@ export default function Home() {
   useEffect(() => {
     const myPokemonData = JSON.parse(window.localStorage.getItem(MY_POKEMON)) ?? [];
     setMyPokemon(myPokemonData);
-    getPokemons();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const amountOwned = data.pokemons.results.map((item) => {
+    return myPokemon.filter((pokemon) => pokemon.name === item.name).length || 0;
+  });
+
+  const pokemonLists = data.pokemons.results.map((pokemon) => ({
+    id: pokemon.id,
+    name: pokemon.name,
+    image: pokemon.image,
+    url: pokemon.url,
+    owned: amountOwned
+  }));   
 
   const loadMore = () => {
     fetchMore({
@@ -83,20 +79,15 @@ export default function Home() {
         />
       </Head>
 
-      {pokemonLists.length ? (
-        pokemonLists.map((pokemon, index) => (
-          <PokemonList
-            key={pokemon.id}
-            name={pokemon.name}
-            image={pokemon.image}
-            owned={pokemon.owned[index]}
-            handleClick={() => redirectToDetail(pokemon)}
-          />
-        ))) : (
-        <LoadingWrapper>
-          <Loading />
-        </LoadingWrapper>
-      )}
+      {pokemonLists.map((pokemon, index) => (
+        <PokemonList
+          key={pokemon.id}
+          name={pokemon.name}
+          image={pokemon.image}
+          owned={pokemon.owned[index]}
+          handleClick={() => redirectToDetail(pokemon)}
+        />
+      ))}
       
       <Button onClick={loadMore}> Load More </Button>
     </>
