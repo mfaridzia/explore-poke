@@ -42,7 +42,9 @@ export default function MyPokemon() {
   return (
     <>
       {myPokemon.length ? (
-        <MyPokemonCardWrapper>
+        <MyPokemonCardWrapper
+          width={myPokemon.length < 2 && '50%'}
+        >
           {myPokemon.map(pokemon => (
             <PokemonList
               key={pokemon.id+`${Math.random()}`}

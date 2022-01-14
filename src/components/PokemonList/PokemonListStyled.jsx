@@ -31,7 +31,7 @@ export const PokemonBox = styled.div`
     top: 25px;
   }
   @media screen and (min-width: 450px) {
-    flex: 25%;
+    flex:  ${(props) => props.flexWidth ? props.flexWidth : '40%' };
     position: relative;
     top: 35px;
   }
@@ -107,5 +107,8 @@ export const PokemonName = styled.h2`
   }
   @media (min-width: 400px) and (max-width: 500px) {
     font-size: 25px;
+  }
+  @media screen and (max-width: 340px) {
+    font-size: 16px;
   }
 `

@@ -37,6 +37,10 @@ export const MyPokemonCardWrapper = styled.div`
   flex-wrap: wrap;
   width: 100%;
   margin: 0px auto;
+  width: ${(props) => props.width ? props.width : 'auto' };
+  @media screen and (max-width: 460px) {
+    width: 100%;
+  }
 `
 
 export const MyPokemonCard = styled.div`
