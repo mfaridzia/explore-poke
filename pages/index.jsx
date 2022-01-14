@@ -83,7 +83,8 @@ export default function Home() {
         />
       </Head>
 
-      { pokemonLists.map((pokemon, index) => (
+      {pokemonLists.length ? (
+        pokemonLists.map((pokemon, index) => (
           <PokemonList
             key={pokemon.id}
             name={pokemon.name}
@@ -91,8 +92,11 @@ export default function Home() {
             owned={pokemon.owned[index]}
             handleClick={() => redirectToDetail(pokemon)}
           />
-        ))
-      }
+        ))) : (
+        <LoadingWrapper>
+          <Loading />
+        </LoadingWrapper>
+      )}
       
       <Button onClick={loadMore}> Load More </Button>
     </>

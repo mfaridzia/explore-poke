@@ -17,11 +17,11 @@ export const ImageWrapper = styled.div`
   }
 `
 
-  export const PokemonName = styled.h2`
-    text-transform: capitalize;
-    font-size: 35px;
-    text-align: center;
-  `
+export const PokemonName = styled.h2`
+  text-transform: capitalize;
+  font-size: 35px;
+  text-align: center;
+`
 
 export const PokemonTypeWrapper = styled.div`
   display: flex;

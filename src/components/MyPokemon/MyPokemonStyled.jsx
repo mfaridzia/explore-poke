@@ -88,7 +88,6 @@ export const PokemonBox = styled.div`
 `
 
 export const ReleaseButton = styled(ButtonCatchPokemon)`
-
 `
 
 
