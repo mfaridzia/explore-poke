@@ -15,7 +15,7 @@ export default function Pokemon() {
   const [isCatched, setIsCatched] = useState('default');
   const [pokemonName, setPokemonName] = useState('');
   const isCatchedValue = Math.random() < 0.5;
-  const { query } = useRouter() || { query: { name: '' } };
+  const { query, isFallback } = useRouter() || { query: { name: '' } };
   const name = query.name;
  
   const { data, loading } = useQuery(GET_POKEMON, {
@@ -39,7 +39,7 @@ export default function Pokemon() {
     }
   }
 
-  if (loading) {
+  if (loading || isFallback) {
     return (
       <LoadingWrapper>
         <Loading />
@@ -79,15 +79,15 @@ export default function Pokemon() {
 }
 
 export async function getStaticPaths() {
-  const apolloClient = initializeApollo()
+  const apolloClient = initializeApollo();
 
   const { data } = await apolloClient.query({
     query: GET_POKEMONS,
     variables: {
       limit: LIMIT,
       offset: OFFSET
-    },
-  })
+    }
+  });
 
   const pokemons = data.pokemons;
 
